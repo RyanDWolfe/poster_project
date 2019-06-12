@@ -9,7 +9,7 @@ class UsersController < ApplicationController
     if !logged_in?
       erb :'users/signup.html'
     else
-      redirect to '/posts/index.html'
+      redirect to '/posts/index'
     end
   end
 
@@ -19,7 +19,7 @@ class UsersController < ApplicationController
     else
       user = User.create(:email => params[:email], :password => params[:password])
       session[:user_id] = user.id
-      redirect to '/posts/index.html'
+      redirect to '/posts/index'
     end
   end
 
@@ -27,7 +27,7 @@ class UsersController < ApplicationController
     if !logged_in?
       erb :'users/login.html'
     else
-      redirect '/posts/index.html'
+      redirect '/posts/index'
     end
   end
 
@@ -35,18 +35,18 @@ class UsersController < ApplicationController
     user = User.find_by(:email => params[:email])
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
-      redirect to '/posts/index.html'
+      redirect to '/posts/index'
     else
-      redirect to '/users/signup.html'
+      redirect to '/users/signup'
     end
   end
 
   get '/logout' do
     if logged_in?
       session.destroy
-      redirect to '/users/login/html'
+      redirect to '/users/login'
     else
-      redirect to '/posts/index.html'
+      redirect to '/posts/index'
     end
   end
 

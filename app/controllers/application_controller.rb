@@ -10,7 +10,7 @@ class ApplicationController < Sinatra::Base
   end
 
   get "/" do
-    erb '/posts/index'
+    erb :'/posts/index.html'
   end
 
   def logged_in?
