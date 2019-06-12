@@ -23,8 +23,9 @@ class PostsController < ApplicationController
         redirect to '/posts/new'
         #add error message
       else
-        @post = current_user.posts.create(:title => params[:title], :content => params[:content])
-        binding.pry
+        @post = Post.create(:title => params[:title], :content => params[:content])
+        @post.user = current_user
+        @post.save
         redirect to "/posts/#{@post.id}"
       end
     else
@@ -35,7 +36,7 @@ class PostsController < ApplicationController
   get '/posts/:id' do #works
     if logged_in?
       @post = Post.find(params[:id])
-      erb :'posts/show.html' #needs fix
+      erb :'posts/show.html'
     else
       redirect to '/users/login'
     end
@@ -45,7 +46,7 @@ class PostsController < ApplicationController
     if logged_in?
       @post = Post.find_by_id(params[:id])
       if @post && @post.user == current_user
-        erb :'posts/show.html'
+        erb :'posts/:id/edit.html'
       else
         redirect to '/posts/index'
       end
@@ -56,16 +57,13 @@ class PostsController < ApplicationController
 
   patch '/posts/:id' do #works
     if logged_in?
-      if params[:title] == "" || params[:content] == ""
+      if params[:content] == ""
         redirect to "/posts/#{params[:id]}/edit"
       else
         @post = Post.find_by_id(params[:id])
         if @post && @post.user == current_user
-          if @post.update(title: params[:title]) || @post.update(content: params[:content])
-            redirect to "/posts/#{@post.id}"
-          else
-            redirect to "/posts/#{@post.id/edit}"
-          end
+          @post.update(content: params[:content])
+          redirect to "/posts/#{@post.id}"
         else
           redirect to '/posts/index'
         end
@@ -77,10 +75,10 @@ class PostsController < ApplicationController
 
   delete '/posts/:id' do #works
     if logged_in?
-      @post = Post.find_by_id(params[:id])
+      @post = Post.find(params[:id])
       if @post && @post.user == current_user
-        @post.delete
-        redirect to '/users/show'
+        @post.destroy
+        redirect to '/posts/index'
       else
         redirect to '/posts/index'
       end
