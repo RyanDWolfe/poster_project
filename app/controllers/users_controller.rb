@@ -41,6 +41,15 @@ class UsersController < ApplicationController
     end
   end
 
+  get '/users/show' do
+    @user = User.find_by(:email => params[:email])
+    # if logged_in?
+      erb :'users/show.html'
+    # else
+    #   redirect to '/users/login'
+    # end
+  end
+
   get '/logout' do
     if logged_in?
       session.destroy
