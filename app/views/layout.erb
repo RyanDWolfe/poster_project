@@ -28,8 +28,23 @@
         overflow: hidden;
       }
 
-      .post {
-        list-style-type: none;
+      ol ul {
+        background-color: #fff;
+      }
+
+      .post-title {
+        display: inline-block;
+        width: 50%;
+        float: left;
+        margin: 1px;
+        padding: 1px;
+        background-color: white;
+      }
+
+      .post-content {
+        display: inline-block;
+        width: 90%;
+        Float: right;
         margin: 1px;
         padding: 1px;
         background-color: white;
@@ -87,6 +102,7 @@
 
   </head>
   <body>
+
     <% if logged_in? %>
     <ul>
       <li><a href="/posts/new">Create Post</a></li>
@@ -95,8 +111,6 @@
       <li><a href="/logout"> Log Out </a></li>
     </ul>
     <br>
-
-
     <% else %>
     <ul>
       <li><a href="/users/signup">Sign Up</a></li>
@@ -105,7 +119,9 @@
     <%end %>
 
     <div class="wrapper">
+        <% if logged_in? %>
         <p class="welcome">Welcome, <%=current_user.email %></p>
+        <% end %>
         <br>
         <%= yield %>
 

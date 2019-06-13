@@ -1,9 +1,10 @@
-<h2> Here are your posts, <%= @user.email %></h2>
-<ol class="post">
+<h2>Here are your posts:</h2>
+<ol>
   <% @user.posts.each do |post| %>
-  <li><%=post.title%> (ID:<%=post.id%>)<a href="/posts/<%=post.id%>">Edit Post</a></li>
-  <ul class="post">
-    <li><%=post.content%></li>
-  </ul>
+    <li class="post-title"><%=post.title%> (ID:<%=post.id%>)</li>
+      <ul>
+        <li class="post-content"><%=post.content%></li>
+      </ul>
+      <a href="/posts/<%=post.id%>">Edit Post</a>
   <% end %>
 </ol>

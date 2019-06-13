@@ -21,7 +21,7 @@ class PostsController < ApplicationController
     if logged_in?
       if params[:title] == "" || params[:content] == ""
         redirect to '/posts/new'
-        #add error message
+        #add error message, use rack flash
       else
         @post = Post.create(:title => params[:title], :content => params[:content])
         @post.user = current_user
