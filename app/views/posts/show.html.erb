@@ -5,11 +5,11 @@
 
 <form action="/posts/<%=@post.id%>" method="POST">
   <input type="hidden" name="_method" value="patch">
-  <input type="text" id="content" name="content">
+  <p><textarea rows= "5" cols= "50" name= "content">Edit your post...</textarea></p>
   <input type="submit" value="Edit Post">
 </form>
-
+<br>
 <form action="/posts/<%=@post.id%>" method="POST">
   <input type="hidden" name="_method" value="delete">
-  <input type="submit" value="Delete Post">
+  <input type="submit" id="delete" value="Delete Post">
 </form>

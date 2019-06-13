@@ -46,10 +46,10 @@ class UsersController < ApplicationController
     end
   end
 
-  get '/users/show' do
+  get '/users/my_posts' do
     @user = User.find_by(:email => params[:email])
     # if logged_in?
-      erb :'users/show.html'
+      erb :'users/my_posts.html'
     # else
     #   redirect to '/users/login'
     # end

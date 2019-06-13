@@ -2,7 +2,7 @@
 <br>
 <ol class="post">
   <% @posts.each do |post| %>
-    <li><%=post.title%> (ID:<%=post.id%>):</li>
+    <li><%=post.title%> (ID:<%=post.id%>)(<%=post.user.email%>):</li>
     <ul class="post">
       <li><%=post.content%></li>
     </ul>
