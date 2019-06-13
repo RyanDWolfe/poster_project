@@ -20,7 +20,7 @@
         overflow: hidden;
         background-color: #333;
       }
-      
+
       ol li {
         list-style-type: none;
         margin: 10px;
@@ -33,6 +33,10 @@
         margin: 1px;
         padding: 1px;
         background-color: white;
+      }
+
+      .welcome {
+
       }
 
       ul li {
@@ -61,8 +65,8 @@
       <li><a href="/logout"> Log Out </a></li>
     </ul>
     <br>
-    <p>Welcome, <%=current_user.email %></p>
-<%#  %>
+
+
     <% else %>
     <ul>
       <li><a href="/users/signup">Sign Up</a></li>
@@ -71,7 +75,8 @@
     <%end %>
 
     <div class="wrapper">
-
+        <p class="welcome">Welcome, <%=current_user.email %></p>
+        <br>
         <%= yield %>
 
       <footer class="branding">
