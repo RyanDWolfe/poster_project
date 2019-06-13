@@ -57,8 +57,10 @@
     <p>Welcome, <%=current_user.email %></p>
 <%#  %>
     <% else %>
-      <a href="/users/signup">Sign Up</a>
-      <a href="/users/login"> Login </a>
+    <ul>
+      <li><a href="/users/signup">Sign Up</a></li>
+      <li><a href="/users/login"> Login </a></li>
+    </ul>
     <%end %>
 
     <div class="wrapper">
