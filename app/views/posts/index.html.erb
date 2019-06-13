@@ -1,7 +1,10 @@
-<h1>All Posts</h1>
-<ol>
+<h1><u>All Posts</u></h1>
+<br>
+<ol class="post">
   <% @posts.each do |post| %>
-    <li><%=post.title%> (ID:<%=post.id%>)</li>
-    <li><%=post.content%></li>
+    <li><%=post.title%> (ID:<%=post.id%>):</li>
+    <ul class="post">
+      <li><%=post.content%></li>
+    </ul>
   <%end%>
 </ol>

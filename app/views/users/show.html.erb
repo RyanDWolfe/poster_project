@@ -1,7 +1,9 @@
 <h2> Here are your posts, <%= @user.email %></h2>
-<ol>
+<ol class="post">
   <% @user.posts.each do |post| %>
   <li><%=post.title%> (ID:<%=post.id%>)<a href="/posts/<%=post.id%>">Edit Post</a></li>
-  <li><%=post.content%></li>
+  <ul class="post">
+    <li><%=post.content%></li>
+  </ul>
   <% end %>
 </ol>
