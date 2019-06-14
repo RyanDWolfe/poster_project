@@ -3,8 +3,9 @@
   <% @user.posts.each do |post| %>
     <li class="post-title"><%=post.title%> (ID:<%=post.id%>)</li>
       <ul>
+        <a href="/posts/<%=post.id%>">Edit Post</a>
         <li class="post-content"><%=post.content%></li>
       </ul>
-      <a href="/posts/<%=post.id%>">Edit Post</a>
+
   <% end %>
 </ol>
